@@ -3,6 +3,8 @@ from tkinter import ttk
 from tkinter import messagebox
 import tkinter as tk
 from tkinter import filedialog
+import os
+
 root = Tk()
 s = ttk.Style()
 s.theme_use("vista")
@@ -15,7 +17,9 @@ def showAbout():
 
 def setDirectory():
     dirname = filedialog.askdirectory()
-    print(dirname)
+    print(dirname,"/file.exe")
+    print(os.listdir(dirname))
+    os.system(dirname + "/snes9x-x64.exe")
 def openPathWindow():
     t = tk.Toplevel(root)
     t.wm_title("Set Directories")
