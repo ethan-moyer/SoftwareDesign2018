@@ -18,8 +18,11 @@ def showAbout():
 def setDirectory():
     dirname = filedialog.askdirectory()
     print(dirname,"/file.exe")
-    print(os.listdir(dirname))
+    folderContents = os.listdir(dirname)
     os.system(dirname + "/snes9x-x64.exe")
+
+    for item in folderContents:
+        listbox.insert(END, item)
 def openPathWindow():
     t = tk.Toplevel(root)
     t.wm_title("Set Directories")
@@ -34,8 +37,11 @@ menuBar.add_cascade(label="Settings", menu=settingsmenu)
 menuBar.add_command(label="About", command=showAbout)
 menuBar.add_command(label="Quit!", command=root.quit)
 
-nameLabel = tk.Label(mainwindow, text="RomBox             ", font=("Arial", 20))
+nameLabel = tk.Label(mainwindow, text="The Rom Box", font=("Arial", 20))
 nameLabel.pack()
+
+listbox = tk.Listbox(root)
+listbox.pack(padx=50)
 
 b1 = ttk.Button(root, text="Hello World")
 b1.pack()
